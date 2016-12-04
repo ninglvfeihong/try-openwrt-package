@@ -43,7 +43,7 @@ define Package/SHS/postinst
 #!/bin/sh
 chmod 755 /etc/init.d/SHS
 /etc/init.d/SHS enable
-[ -f "/usr/lib/libboost_regex.so.1.58.0" ] ln -s /usr/lib/libboost_regex.so.1.58.0 /usr/lib/libboost_regex.so.1.51.0
+[ -f "/usr/lib/libboost_regex.so.1.58.0" ] && ln -s /usr/lib/libboost_regex.so.1.58.0 /usr/lib/libboost_regex.so.1.51.0
 echo Please restart the router!!!
 endef
 
