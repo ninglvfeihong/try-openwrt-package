@@ -1,0 +1,44 @@
+#!/bin/bash
+gpio_path=/sys/class/gpio
+lightone(){
+
+echo 1 > value
+sleep 1
+echo 0 > value
+}
+lighton(){
+echo 0 > value
+}
+lightoff(){
+echo 1 > value
+}
+flash(){
+for i in $(seq 1 10)
+do
+echo 1 > value
+sleep 1
+echo 0 > value
+sleep 1
+done
+}
+cd $gpio_path
+echo 18 > export
+cd $gpio_path/gpio18
+echo out > direction
+case $1 in
+1)
+lighton
+;;
+2)
+lightoff
+;;
+3)
+lightone
+;;
+4)
+flash
+;;
+esac
+cd $gpio_path
+echo 18 > unexport
+

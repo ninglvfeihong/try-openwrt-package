@@ -26,7 +26,7 @@ endef
 
 define Package/SHS/install
 	$(INSTALL_DIR) $(1)/usr/SHS/bin
-	$(INSTALL_BIN) ./bin/SHS_cpp $(1)/usr/SHS/bin
+	$(INSTALL_BIN) ./files/usr/SHS/bin/SHS_cpp $(1)/usr/SHS/bin/
 endef
 
 $(eval $(call BuildPackage,SHS))

@@ -1,0 +1,23 @@
+{
+  "rabbitmq":{
+    "hostname":"59.110.45.150",
+    "port":5672,
+    "vhost":"/",
+    "user":"shs-ap",
+    "password":"accessnet10",
+    "exchange":"SHS"
+  },
+  "home":{
+    "id":-1
+  },
+  "serialport":{
+    "port":"/dev/ttyATH0",
+    "baudrate":115200
+  },
+  "tables_path":{
+    "lookup_table":"/etc/SHS/lookup.json"
+  },
+  "logfile":"/etc/SHS/shs.log",
+  "debugLevel":2
+}
+
