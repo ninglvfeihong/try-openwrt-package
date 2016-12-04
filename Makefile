@@ -24,9 +24,40 @@ define Build/Prepare
 	$(CP) ./src/* $(PKG_BUILD_DIR)/
 endef
 
+define Package/SHS/preinst
+#!/bin/sh
+#backup some system file
+if [ -f "/etc/config/system.bak" ] ; then
+	rm -f /etc/config/system
+else
+	mv -f /etc/config/system /etc/config/system.bak
+fi
+if [ -f "/etc/inittab.bak" ] ; then
+        rm -f /etc/config/system
+else
+        mv -f /etc/inittab /etc/inittab.bak
+fi
+echo Please restart the router!!!
+endef
+
+define Package/SHS/postinst
+#!/bin/sh
+chmod 755 /etc/init.d/SHS
+/etc/init.d/SHS enable
+endef
+
+define Package/SHS/postrm
+#!/bin/sh
+[ -f "/etc/config/system.bak" ] && mv -f /etc/config/system.bak /etc/config/system
+[ -f "/etc/inittab.bak" ] && mv -f /etc/inittab.bak /etc/inittab
+echo Please restart the router!!!
+endef
+
 define Package/SHS/install
 	$(INSTALL_DIR) $(1)/usr/SHS/bin
-	$(INSTALL_BIN) ./files/usr/SHS/bin/SHS_cpp $(1)/usr/SHS/bin/
+	$(CP) ./files/* $(1)/
+	$(RM) -r $(1)/other
+	$(INSTALL_BIN) ./files/usr/SHS/bin/* $(1)/usr/SHS/bin/
 endef
 
 $(eval $(call BuildPackage,SHS))
