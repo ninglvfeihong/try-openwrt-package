@@ -47,6 +47,11 @@ chmod 755 /etc/init.d/SHS
 echo Please restart the router!!!
 endef
 
+define Package/SHS/prerm
+#!/bin/sh
+/etc/init.d/SHS stop
+endef
+
 define Package/SHS/postrm
 #!/bin/sh
 [ -f "/etc/config/system.bak" ] && mv -f /etc/config/system.bak /etc/config/system
