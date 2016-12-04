@@ -1,5 +1,5 @@
 config system
-	option hostname	OpenWrt
+	option hostname baiyatech	
 	option timezone	UTC
 	option 'conloglevel' '1'  
 	option 'kconloglevel' '1' 
