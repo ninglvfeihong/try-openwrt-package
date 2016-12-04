@@ -11,7 +11,7 @@ include $(INCLUDE_DIR)/package.mk
 define Package/SHS
   SECTION:=base
   CATEGORY:=Utilities
-  DEPENDS:=+boost-regex +libcrypto +libpthread +libopenssl +libstdcpp +librt
+  DEPENDS:=+boost-regex +libpthread +libopenssl +libstdcpp +librt
   TITLE:=Smart Hotel System
 endef
 
@@ -37,19 +37,21 @@ if [ -f "/etc/inittab.bak" ] ; then
 else
         mv -f /etc/inittab /etc/inittab.bak
 fi
-echo Please restart the router!!!
 endef
 
 define Package/SHS/postinst
 #!/bin/sh
 chmod 755 /etc/init.d/SHS
 /etc/init.d/SHS enable
+[ -f "/usr/lib/libboost_regex.so.1.58.0" ] ln -s /usr/lib/libboost_regex.so.1.58.0 /usr/lib/libboost_regex.so.1.51.0
+echo Please restart the router!!!
 endef
 
 define Package/SHS/postrm
 #!/bin/sh
 [ -f "/etc/config/system.bak" ] && mv -f /etc/config/system.bak /etc/config/system
 [ -f "/etc/inittab.bak" ] && mv -f /etc/inittab.bak /etc/inittab
+[ -f "/usr/lib/libboost_regex.so.1.58.0" ] && [ -f "/usr/lib/libboost_regex.so.1.51.0" ] && rm -f /usr/lib/libboost_regex.so.1.51.0
 echo Please restart the router!!!
 endef
 
