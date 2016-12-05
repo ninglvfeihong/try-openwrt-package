@@ -1,0 +1,5 @@
+usign tool:
+  1. This tool is copy from openwrt 15.5 built-root. Location:openwrt/staging_dir/host/bin 
+  2. Generate keys: ./usign -G -c baiyatech.com -p opkg-SHS-project.pub -s opkg-SHS-project.key 
+  3. Sign: ./usign -S -m README -P opkg-SHS-project.key
+  4. Verify: ./usign -V -p ./opkg-SHS-project.pub -P . -m README -x ./README.sig 
