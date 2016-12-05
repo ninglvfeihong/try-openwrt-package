@@ -8,7 +8,8 @@ pkg_dst := $(mkdir)/ipks/
 package:
 	@mkdir -p $(pkg_dst)
 	@cd $(pkg_dst) && $(pkg_build) $(pkg_src)
-	@cd $(pkg_dst) && $(pkg_make_index) . > Package
+	@cd $(pkg_dst) && $(pkg_make_index) . > Packages
+	@gzip -9c $(pkg_dst)/Packages > $(pkg_dst)/Packages.gz
 clean:
 	$(RM) -r $(pkg_dst)
 
