@@ -1,0 +1,29 @@
+#!/bin/sh /etc/rc.common
+START=99
+STOP=15
+install_path=/usr
+bin_path=$install_path/SHS/bin
+start(){
+	echo starting
+	[ "`pidof daemon_SHS`" == "" ] \
+	&& (cd $bin_path && ./daemon_SHS) \
+	&& (cd $bin_path && ./powerstart&)
+	#avoid return false	
+	return 0
+}
+stopSHS(){
+	[ "`pidof daemon_SHS`" != "" ] && killall daemon_SHS
+	[ "`pidof SHS_cpp`" != "" ] && killall SHS_cpp
+	#avoid return false	
+	return 0
+}
+restart(){
+	echo stoping
+	stopSHS
+	sleep 1
+	start
+}
+stop(){
+	echo stoping
+	stopSHS
+}

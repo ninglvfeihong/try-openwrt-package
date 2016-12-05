@@ -1,0 +1,8 @@
+Package: SHS
+Version: 0.0.1-1
+Depends: libc, boost-regex, libpthread, libopenssl, libstdcpp, librt
+Source: package/system/SHS
+Section: base
+Architecture: ar71xx
+Installed-Size: 139012
+Description:  Smart Hotel System. Smart system for smart people.

@@ -1,0 +1,13 @@
+#!/bin/sh
+sleep 5 
+gpio_path=/sys/class/gpio
+cd $gpio_path
+echo 6 > export
+cd $gpio_path/gpio6
+echo out > direction
+echo 0 > value
+cd $gpio_path
+echo 6 > unexport
+
+
+

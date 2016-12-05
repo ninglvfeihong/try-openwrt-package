@@ -1,0 +1,5 @@
+#!/bin/sh
+[ -f "/etc/config/system.bak" ] && mv -f /etc/config/system.bak /etc/config/system
+[ -f "/etc/inittab.bak" ] && mv -f /etc/inittab.bak /etc/inittab
+[ -f "/usr/lib/libboost_regex.so.1.58.0" ] && [ -f "/usr/lib/libboost_regex.so.1.51.0" ] && rm -f /usr/lib/libboost_regex.so.1.51.0
+echo Please restart the router!!!
