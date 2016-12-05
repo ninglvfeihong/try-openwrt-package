@@ -4,5 +4,5 @@ Depends: libc, boost-regex, libpthread, libopenssl, libstdcpp, librt
 Source: package/utils/SHS
 Section: base
 Architecture: ar71xx
-Installed-Size: 139012
+Installed-Size: 138930
 Description:  Smart Hotel System. Smart system for smart people.
